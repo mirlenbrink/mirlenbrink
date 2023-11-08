@@ -2,7 +2,7 @@ function FindProxyForURL(url, host) {
     // If the hostname matches 'www.bing.com' and the path contains '/chat',
     // or if the hostname is 'edgeservices.bing.com' (used by Copilot in Edge),
     // then redirect to 'nochat.bing.com' to block it.
-    if ((dnsDomainIs(host, "www.bing.com") && shExpMatch(url, "*/chat*")) ||
+    if ((dnsDomainIs(host, "www.bing.com") && (shExpMatch(url, "*/chat*") || shExpMatch(url, "*/search*"))) ||
         dnsDomainIs(host, "edgeservices.bing.com")) {
         return "PROXY nochat.bing.com";
     }
